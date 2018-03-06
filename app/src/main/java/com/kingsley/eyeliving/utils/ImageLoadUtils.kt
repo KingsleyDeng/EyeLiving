@@ -7,9 +7,7 @@ import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.kingsley.eyeliving.R
 
-/**
- * Created by lvruheng on 2017/7/6.
- */
+
 class ImageLoadUtils{
     companion object{
         fun display(context: Context, imageView: ImageView?, url: String) {
