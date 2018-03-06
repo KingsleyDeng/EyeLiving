@@ -7,9 +7,12 @@ import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.kingsley.eyeliving.R
 
-
-class ImageLoadUtils{
-    companion object{
+/**
+ *  封装Glide
+ *  实现图片加载
+ */
+class ImageLoadUtils {
+    companion object {
         fun display(context: Context, imageView: ImageView?, url: String) {
             if (imageView == null) {
                 throw IllegalArgumentException("argument error")
@@ -21,7 +24,8 @@ class ImageLoadUtils{
                     .error(R.drawable.ic_empty_picture)
                     .crossFade().into(imageView)
         }
-        fun displayHigh(context: Context, imageView: ImageView?, url: String){
+
+        fun displayHigh(context: Context, imageView: ImageView?, url: String) {
             if (imageView == null) {
                 throw IllegalArgumentException("argument error")
             }

@@ -1,5 +1,6 @@
 package com.kingsley.eyeliving.network
 
+import com.kingsley.eyeliving.mvp.model.bean.FindBean
 import com.kingsley.eyeliving.mvp.model.bean.HomeBean
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -25,9 +26,9 @@ interface ApiService {
     @GET("v2/feed")
     fun getHomeMoreData(@Query("date") date :String, @Query("num") num :String) : Observable<HomeBean>
 
-//    //获取发现频道信息
-//    @GET("v2/categories?udid=26868b32e808498db32fd51fb422d00175e179df&vc=83")
-//    fun getFindData() : Observable<MutableList<FindBean>>
+    //获取发现频道信息
+    @GET("v2/categories?udid=26868b32e808498db32fd51fb422d00175e179df&vc=83")
+    fun getFindData() : Observable<MutableList<FindBean>>
 //
 //
 //    //获取热门排行信息
