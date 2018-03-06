@@ -23,6 +23,13 @@ class HomePresenter(context: Context, view: HomeContract.View) : HomeContract.Pr
         mContext = context
     }
 
+    fun moreData(data: String?) {
+        val observable: Observable<HomeBean>? = mContext?.let { mModel.loadData(it, false, data) }
+        observable?.applySchedulers()?.subscribe { homeBean: HomeBean ->
+            mView?.setData(homeBean)
+        }
+    }
+
     override fun start() {
         requestData()
     }

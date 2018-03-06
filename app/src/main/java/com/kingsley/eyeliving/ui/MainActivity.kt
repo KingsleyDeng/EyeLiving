@@ -41,6 +41,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         initFragment(savedInstanceState)
     }
 
+    private fun initToolbar() {
+        var today = getToday()
+        tv_bar_title.text = today
+        tv_bar_title.typeface = Typeface.createFromAsset(this.assets, "fonts/Lobster-1.4.otf")
+        iv_search.setOnClickListener {
+            if (rb_mine.isChecked) {
+                //todo 点击设置
+            } else {
+                //todo 点击搜索
+                Toast.makeText(this, "点击搜索", Toast.LENGTH_LONG).show()
+            }
+        }
+
+    }
+    // 获取星期 作为Toolbar标题
+    private fun getToday(): String {
+        var list = arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+        var data: Date = Date()
+        var calendar: Calendar = Calendar.getInstance()
+        calendar.time = data
+        var index: Int = calendar.get(Calendar.DAY_OF_WEEK) - 1
+        if (index < 0) {
+            index = 0
+        }
+        return list[index]
+    }
+
     private fun initFragment(savedInstanceState: Bundle?) {
 
         if (savedInstanceState != null) {
@@ -88,27 +115,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         rb_mine.setOnClickListener(this)
     }
 
-    private fun initToolbar() {
-
-        var today = getToday()
-        tv_bar_title.text = today
-        tv_bar_title.typeface = Typeface.createFromAsset(this.assets, "fonts/Lobster-1.4.otf")
-
-
-    }
-
-    // 获取星期 作为Toolbar标题
-    private fun getToday(): String {
-        var list = arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-        var data: Date = Date()
-        var calendar: Calendar = Calendar.getInstance()
-        calendar.time = data
-        var index: Int = calendar.get(Calendar.DAY_OF_WEEK) - 1
-        if (index < 0) {
-            index = 0
-        }
-        return list[index]
-    }
 
     override fun onClick(v: View?) {
         clearState()
