@@ -5,7 +5,7 @@ import com.kingsley.eyeliving.adapter.FindAdapter
 import com.kingsley.eyeliving.mvp.contract.FindContract
 import com.kingsley.eyeliving.mvp.model.bean.FindBean
 import com.kingsley.eyeliving.mvp.presenter.FindPresenter
-import kotlinx.android.synthetic.main.hot_fragment.*
+import kotlinx.android.synthetic.main.find_fragment.*
 
 /**
  * Created by Stephen on 2018/3/5.
