@@ -12,7 +12,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.kingsley.eyeliving.R
 import com.kingsley.eyeliving.mvp.model.bean.HomeBean
+import com.kingsley.eyeliving.mvp.model.bean.VideoBean
+import com.kingsley.eyeliving.ui.VideoDetailActivity
 import com.kingsley.eyeliving.utils.ImageLoadUtils
+import com.tt.lvruheng.eyepetizer.utils.ObjectSaveUtils
+import com.tt.lvruheng.eyepetizer.utils.SPUtils
 
 /**
  * Created by Stephen on 2018/3/6.
@@ -66,33 +70,33 @@ class HomeAdapter(context: Context, list: MutableList<HomeBean.IssueListBean.Ite
         } else {
             holder?.iv_user?.visibility = View.GONE
         }
-//        holder?.itemView?.setOnClickListener {
-//            //跳转视频详情页
-//            var intent: Intent = Intent(context, VideoDetailActivity::class.java)
-//            var desc = bean?.data?.description
-//            var duration = bean?.data?.duration
-//            var playUrl = bean?.data?.playUrl
-//            var blurred = bean?.data?.cover?.blurred
-//            var collect = bean?.data?.consumption?.collectionCount
-//            var share = bean?.data?.consumption?.shareCount
-//            var reply = bean?.data?.consumption?.replyCount
-//            var time = System.currentTimeMillis()
-//            var videoBean = VideoBean(photo, title, desc, duration, playUrl, category, blurred, collect, share, reply, time)
-//            var url = SPUtils.getInstance(context!!, "beans").getString(playUrl!!)
-//            if (url.equals("")) {
-//                var count = SPUtils.getInstance(context!!, "beans").getInt("count")
-//                if (count != -1) {
-//                    count = count.inc()
-//                } else {
-//                    count = 1
-//                }
-//                SPUtils.getInstance(context!!, "beans").put("count", count)
-//                SPUtils.getInstance(context!!, "beans").put(playUrl!!, playUrl)
-//                ObjectSaveUtils.saveObject(context!!, "bean$count", videoBean)
-//            }
-//            intent.putExtra("data", videoBean as Parcelable)
-//            context?.let { context -> context.startActivity(intent) }
-//        }
+        holder?.itemView?.setOnClickListener {
+            //跳转视频详情页
+            var intent: Intent = Intent(context, VideoDetailActivity::class.java)
+            var desc = bean?.data?.description
+            var duration = bean?.data?.duration
+            var playUrl = bean?.data?.playUrl
+            var blurred = bean?.data?.cover?.blurred
+            var collect = bean?.data?.consumption?.collectionCount
+            var share = bean?.data?.consumption?.shareCount
+            var reply = bean?.data?.consumption?.replyCount
+            var time = System.currentTimeMillis()
+            var videoBean = VideoBean(photo, title, desc, duration, playUrl, category, blurred, collect, share, reply, time)
+            var url = SPUtils.getInstance(context!!, "beans").getString(playUrl!!)
+            if (url.equals("")) {
+                var count = SPUtils.getInstance(context!!, "beans").getInt("count")
+                if (count != -1) {
+                    count = count.inc()
+                } else {
+                    count = 1
+                }
+                SPUtils.getInstance(context!!, "beans").put("count", count)
+                SPUtils.getInstance(context!!, "beans").put(playUrl!!, playUrl)
+                ObjectSaveUtils.saveObject(context!!, "bean$count", videoBean)
+            }
+            intent.putExtra("data", videoBean as Parcelable)
+            context?.let { context -> context.startActivity(intent) }
+        }
     }
 
     class HomeViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolder(itemView) {
