@@ -2,6 +2,7 @@ package com.kingsley.eyeliving.ui.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.widget.Toast
 import com.kingsley.eyeliving.R
 import com.kingsley.eyeliving.adapter.HotAdapter
 import kotlinx.android.synthetic.main.hot_fragment.*
@@ -37,7 +38,7 @@ class HotFragment : BaseFragment() {
         mFragments.add(weekFragment as Fragment)
         mFragments.add(monthFragment as Fragment)
         mFragments.add(allFragment as Fragment)
-        vp_content.adapter = HotAdapter(fragmentManager, mFragments, mTabs)
+        vp_content.adapter = HotAdapter(childFragmentManager, mFragments, mTabs)
         tabs.setupWithViewPager(vp_content)
 
     }

@@ -92,7 +92,7 @@ class RankAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBea
         init {
             iv_photo = itemView?.findViewById(R.id.iv_photo)
             tv_time = itemView?.findViewById(R.id.tv_time)
-            tv_title = itemView?.findViewById(R.id.tv_time)
+            tv_title = itemView?.findViewById(R.id.tv_title)
             tv_title?.typeface = Typeface.createFromAsset(context?.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
 
         }

@@ -2,12 +2,13 @@ package com.kingsley.eyeliving.ui.fragments
 
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.widget.Toast
 import com.kingsley.eyeliving.R
 import com.kingsley.eyeliving.adapter.RankAdapter
 import com.kingsley.eyeliving.mvp.contract.HotContract
 import com.kingsley.eyeliving.mvp.model.bean.HotBean
 import com.kingsley.eyeliving.mvp.presenter.HotPresenter
-import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.rank_fragment.*
 
 class RankFragment : BaseFragment(), HotContract.View {
 
@@ -22,9 +23,10 @@ class RankFragment : BaseFragment(), HotContract.View {
     }
 
     override fun initView() {
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclersView.layoutManager = LinearLayoutManager(context)
         mAdapter = RankAdapter(context, mList)
-        recyclerView.adapter = mAdapter
+        recyclersView.adapter = mAdapter
+        Toast.makeText(context,"Eyeliving", Toast.LENGTH_LONG).show()
         if (arguments != null) {
             mStrategy = arguments.getString("strategy")
             mPresenter = HotPresenter(context, this)
