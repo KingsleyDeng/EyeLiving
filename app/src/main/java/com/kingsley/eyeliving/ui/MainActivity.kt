@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.Toast
 import com.gyf.barlibrary.ImmersionBar
 import com.kingsley.eyeliving.R
+import com.kingsley.eyeliving.search.SEARCH_TAG
+import com.kingsley.eyeliving.search.SearchFragment
 import com.kingsley.eyeliving.ui.fragments.FindFragment
 import com.kingsley.eyeliving.ui.fragments.HomeFragment
 import com.kingsley.eyeliving.ui.fragments.HotFragment
@@ -25,6 +27,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     var mineFragment: MineFragment? = null
     var toast: Toast? = null
     var mExitTime: Long = 0
+
+    lateinit var searchFragment: SearchFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +54,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 //todo 点击设置
             } else {
                 //todo 点击搜索
-                Toast.makeText(this, "点击搜索", Toast.LENGTH_LONG).show()
+                searchFragment = SearchFragment()
+                searchFragment.show(fragmentManager, SEARCH_TAG)
             }
         }
 
     }
+
     // 获取星期 作为Toolbar标题
     private fun getToday(): String {
         var list = arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")

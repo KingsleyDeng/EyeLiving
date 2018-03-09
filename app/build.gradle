@@ -51,6 +51,8 @@ dependencies {
     compile 'com.shuyu:GSYVideoPlayer:1.6.8'
     //rxdownload
     compile 'zlc.season:rxdownload2:2.0.4'
+    //flexbox
+    compile 'com.google.android:flexbox:0.3.0-alpha2'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
