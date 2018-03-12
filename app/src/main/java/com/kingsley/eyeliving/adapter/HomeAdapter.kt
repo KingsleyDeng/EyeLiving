@@ -15,8 +15,8 @@ import com.kingsley.eyeliving.mvp.model.bean.HomeBean
 import com.kingsley.eyeliving.mvp.model.bean.VideoBean
 import com.kingsley.eyeliving.ui.VideoDetailActivity
 import com.kingsley.eyeliving.utils.ImageLoadUtils
-import com.tt.lvruheng.eyepetizer.utils.ObjectSaveUtils
-import com.tt.lvruheng.eyepetizer.utils.SPUtils
+import com.kingsley.eyeliving.utils.ObjectSaveUtils
+import com.kingsley.eyeliving.utils.SPUtils
 
 /**
  * Created by Stephen on 2018/3/6.

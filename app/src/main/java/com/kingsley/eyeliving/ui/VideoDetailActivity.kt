@@ -16,14 +16,10 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.kingsley.eyeliving.R
 import com.kingsley.eyeliving.mvp.model.bean.VideoBean
-import com.kingsley.eyeliving.utils.ImageLoadUtils
-import com.kingsley.eyeliving.utils.VideoListener
-import com.kingsley.eyeliving.utils.showToast
+import com.kingsley.eyeliving.utils.*
 import com.shuyu.gsyvideoplayer.GSYVideoPlayer
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
-import com.tt.lvruheng.eyepetizer.utils.ObjectSaveUtils
-import com.tt.lvruheng.eyepetizer.utils.SPUtils
 import kotlinx.android.synthetic.main.activity_video_detail.*
 import zlc.season.rxdownload2.RxDownload
 import java.io.FileInputStream

@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".ui.VideoDetailActivity" />
         <activity android:name=".ui.ResultActivity" />
-        <activity android:name=".ui.FeedDetailActivity"></activity>
+        <activity android:name=".ui.FeedDetailActivity" />
+        <activity android:name=".ui.WatchActivity"></activity>
     </application>
 
 </manifest>

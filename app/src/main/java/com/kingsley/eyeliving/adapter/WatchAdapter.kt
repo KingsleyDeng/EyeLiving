@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.kingsley.eyeliving.R
-import com.kingsley.eyeliving.mvp.model.bean.HotBean
 import com.kingsley.eyeliving.mvp.model.bean.VideoBean
 import com.kingsley.eyeliving.ui.VideoDetailActivity
 import com.kingsley.eyeliving.utils.ImageLoadUtils
@@ -22,10 +21,10 @@ import java.text.SimpleDateFormat
 /**
  * Created by Stephen on 2018/3/12.
  */
-class FeedAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBean>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
+class WatchAdapter(context: Context, list: ArrayList<VideoBean>) : RecyclerView.Adapter<WatchAdapter.WatchViewHolder>() {
 
-    var context: Context? = null;
-    var list: ArrayList<HotBean.ItemListBean.DataBean>? = null
+    var context: Context? = null
+    var list: ArrayList<VideoBean>? = null
     var inflater: LayoutInflater? = null
 
     init {
@@ -34,17 +33,16 @@ class FeedAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBea
         this.inflater = LayoutInflater.from(context)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): FeedViewHolder {
-        return FeedViewHolder(inflater?.inflate(R.layout.item_feed_result, parent, false), context!!)
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): WatchViewHolder {
+        return WatchViewHolder(inflater?.inflate(R.layout.item_feed_result, parent, false), context!!)
     }
 
     override fun getItemCount(): Int {
         return list?.size ?: 0
     }
 
-    override fun onBindViewHolder(holder: FeedViewHolder?, position: Int) {
-
-        var photoUrl: String? = list?.get(position)?.cover?.feed
+    override fun onBindViewHolder(holder: WatchViewHolder?, position: Int) {
+        var photoUrl: String? = list?.get(position)?.feed
         photoUrl?.let { ImageLoadUtils.display(context!!, holder?.iv_photo, it) }
         var title: String? = list?.get(position)?.title
         holder?.tv_title?.text = title
@@ -52,7 +50,7 @@ class FeedAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBea
         var duration = list?.get(position)?.duration
         var minute = duration?.div(60)
         var second = duration?.minus((minute?.times(60)) as Long)
-        var releaseTime = list?.get(position)?.releaseTime
+        var releaseTime = list?.get(position)?.time
         var smf: SimpleDateFormat = SimpleDateFormat("MM-dd")
         var date = smf.format(releaseTime)
         var realMinute: String
@@ -73,10 +71,10 @@ class FeedAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBea
             var intent: Intent = Intent(context, VideoDetailActivity::class.java)
             var desc = list?.get(position)?.description
             var playUrl = list?.get(position)?.playUrl
-            var blurred = list?.get(position)?.cover?.blurred
-            var collect = list?.get(position)?.consumption?.collectionCount
-            var share = list?.get(position)?.consumption?.shareCount
-            var reply = list?.get(position)?.consumption?.replyCount
+            var blurred = list?.get(position)?.blurred
+            var collect = list?.get(position)?.collect
+            var share = list?.get(position)?.share
+            var reply = list?.get(position)?.reply
             var time = System.currentTimeMillis()
             var videoBean = VideoBean(photoUrl, title, desc, duration, playUrl, category, blurred, collect, share, reply, time)
             var url = SPUtils.getInstance(context!!, "beans").getString(playUrl!!)
@@ -96,15 +94,15 @@ class FeedAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBea
         }
     }
 
-    class FeedViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolder(itemView) {
+    class WatchViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolder(itemView) {
         var iv_photo: ImageView? = itemView?.findViewById(R.id.iv_photo)
         var tv_title: TextView? = itemView?.findViewById(R.id.tv_title)
         var tv_time: TextView? = itemView?.findViewById(R.id.tv_detail)
 
         init {
             tv_title?.typeface = Typeface.createFromAsset(context?.assets, "fonts/FZLanTingHeiS-L-GB-Regular.TTF")
+
         }
     }
-
 
 }
