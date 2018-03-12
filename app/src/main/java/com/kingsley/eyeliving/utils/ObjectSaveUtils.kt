@@ -1,11 +1,8 @@
-package com.tt.lvruheng.eyepetizer.utils
+package com.kingsley.eyeliving.utils
 
 import android.content.Context
 import java.io.*
 
-/**
- * Created by lvruheng on 2017/7/11.
- */
 object ObjectSaveUtils{
     fun saveObject(context: Context, name: String, value: Any) {
         var fos: FileOutputStream? = null

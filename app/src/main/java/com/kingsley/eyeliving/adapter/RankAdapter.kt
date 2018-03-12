@@ -1,7 +1,9 @@
 package com.kingsley.eyeliving.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
+import android.os.Parcelable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +12,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.kingsley.eyeliving.R
 import com.kingsley.eyeliving.mvp.model.bean.HotBean
+import com.kingsley.eyeliving.mvp.model.bean.VideoBean
+import com.kingsley.eyeliving.ui.VideoDetailActivity
 import com.kingsley.eyeliving.utils.ImageLoadUtils
+import com.kingsley.eyeliving.utils.ObjectSaveUtils
+import com.kingsley.eyeliving.utils.SPUtils
 
 class RankAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBean>) : RecyclerView.Adapter<RankAdapter.RankViewHolder>() {
 
@@ -54,32 +60,32 @@ class RankAdapter(context: Context, list: ArrayList<HotBean.ItemListBean.DataBea
             realSecond = second.toString()
         }
         holder?.tv_time?.text = "$category / $realMinute'$realSecond''"
-        //      holder?.itemView?.setOnClickListener {
-        //            //跳转视频详情页
-//            var intent : Intent = Intent(context, VideoDetailActivity::class.java)
-//            var desc = list?.get(position)?.description
-//            var playUrl = list?.get(position)?.playUrl
-//            var blurred = list?.get(position)?.cover?.blurred
-//            var collect = list?.get(position)?.consumption?.collectionCount
-//            var share = list?.get(position)?.consumption?.shareCount
-//            var reply = list?.get(position)?.consumption?.replyCount
-//            var time = System.currentTimeMillis()
-//            var videoBean  = VideoBean(photoUrl,title,desc,duration,playUrl,category,blurred,collect ,share ,reply,time)
-//            var url = SPUtils.getInstance(context!!,"beans").getString(playUrl!!)
-//            if(url.equals("")){
-//                var count = SPUtils.getInstance(context!!,"beans").getInt("count")
-//                if(count!=-1){
-//                    count = count.inc()
-//                }else{
-//                    count = 1
-//                }
-//                SPUtils.getInstance(context!!,"beans").put("count",count)
-//                SPUtils.getInstance(context!!,"beans").put(playUrl!!,playUrl)
-//                ObjectSaveUtils.saveObject(context!!,"bean$count",videoBean)
-//            }
-//            intent.putExtra("data",videoBean as Parcelable)
-//            context?.let { context -> context.startActivity(intent) }
-        //   }
+        holder?.itemView?.setOnClickListener {
+            //跳转视频详情页
+            var intent: Intent = Intent(context, VideoDetailActivity::class.java)
+            var desc = list?.get(position)?.description
+            var playUrl = list?.get(position)?.playUrl
+            var blurred = list?.get(position)?.cover?.blurred
+            var collect = list?.get(position)?.consumption?.collectionCount
+            var share = list?.get(position)?.consumption?.shareCount
+            var reply = list?.get(position)?.consumption?.replyCount
+            var time = System.currentTimeMillis()
+            var videoBean = VideoBean(photoUrl, title, desc, duration, playUrl, category, blurred, collect, share, reply, time)
+            var url = SPUtils.getInstance(context!!, "beans").getString(playUrl!!)
+            if (url.equals("")) {
+                var count = SPUtils.getInstance(context!!, "beans").getInt("count")
+                if (count != -1) {
+                    count = count.inc()
+                } else {
+                    count = 1
+                }
+                SPUtils.getInstance(context!!, "beans").put("count", count)
+                SPUtils.getInstance(context!!, "beans").put(playUrl!!, playUrl)
+                ObjectSaveUtils.saveObject(context!!, "bean$count", videoBean)
+            }
+            intent.putExtra("data", videoBean as Parcelable)
+            context?.let { context -> context.startActivity(intent) }
+        }
     }
 
 

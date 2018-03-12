@@ -1,18 +1,10 @@
-package com.tt.lvruheng.eyepetizer.utils
+package com.kingsley.eyeliving.utils
 
-import android.R.id.edit
 import android.content.Context
-import android.support.annotation.NonNull
-import java.util.Collections.emptySet
-import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import java.util.*
 
-
-/**
- * Created by lvruheng on 2017/7/11.
- */
-class SPUtils private constructor(context: Context,spName: String) {
+class SPUtils private constructor(context: Context, spName: String) {
     private val sp: SharedPreferences
 
     init {
@@ -39,7 +31,8 @@ class SPUtils private constructor(context: Context,spName: String) {
      * *
      * @return 存在返回对应值，不存在返回默认值`defaultValue`
      */
-    @JvmOverloads fun getString(key: String, defaultValue: String = ""): String {
+    @JvmOverloads
+    fun getString(key: String, defaultValue: String = ""): String {
         return sp.getString(key, defaultValue)
     }
 
@@ -63,7 +56,8 @@ class SPUtils private constructor(context: Context,spName: String) {
      * *
      * @return 存在返回对应值，不存在返回默认值`defaultValue`
      */
-    @JvmOverloads fun getInt(key: String, defaultValue: Int = -1): Int {
+    @JvmOverloads
+    fun getInt(key: String, defaultValue: Int = -1): Int {
         return sp.getInt(key, defaultValue)
     }
 
@@ -87,7 +81,8 @@ class SPUtils private constructor(context: Context,spName: String) {
      * *
      * @return 存在返回对应值，不存在返回默认值`defaultValue`
      */
-    @JvmOverloads fun getLong(key: String, defaultValue: Long = -1L): Long {
+    @JvmOverloads
+    fun getLong(key: String, defaultValue: Long = -1L): Long {
         return sp.getLong(key, defaultValue)
     }
 
@@ -111,7 +106,8 @@ class SPUtils private constructor(context: Context,spName: String) {
      * *
      * @return 存在返回对应值，不存在返回默认值`defaultValue`
      */
-    @JvmOverloads fun getFloat(key: String, defaultValue: Float = -1f): Float {
+    @JvmOverloads
+    fun getFloat(key: String, defaultValue: Float = -1f): Float {
         return sp.getFloat(key, defaultValue)
     }
 
@@ -135,7 +131,8 @@ class SPUtils private constructor(context: Context,spName: String) {
      * *
      * @return 存在返回对应值，不存在返回默认值`defaultValue`
      */
-    @JvmOverloads fun getBoolean(key: String, defaultValue: Boolean = false): Boolean {
+    @JvmOverloads
+    fun getBoolean(key: String, defaultValue: Boolean = false): Boolean {
         return sp.getBoolean(key, defaultValue)
     }
 
@@ -159,7 +156,8 @@ class SPUtils private constructor(context: Context,spName: String) {
      * *
      * @return 存在返回对应值，不存在返回默认值`defaultValue`
      */
-    @JvmOverloads fun getStringSet(key: String, defaultValue: Set<String> = Collections.emptySet()): Set<String> {
+    @JvmOverloads
+    fun getStringSet(key: String, defaultValue: Set<String> = Collections.emptySet()): Set<String> {
         return sp.getStringSet(key, defaultValue)
     }
 
@@ -200,7 +198,7 @@ class SPUtils private constructor(context: Context,spName: String) {
 
     companion object {
 
-        private val sSPMap = HashMap<String,SPUtils>()
+        private val sSPMap = HashMap<String, SPUtils>()
 
         /**
          * 获取SP实例
@@ -209,12 +207,12 @@ class SPUtils private constructor(context: Context,spName: String) {
          * *
          * @return [SPUtils]
          */
-        fun getInstance(context: Context,spName: String): SPUtils {
+        fun getInstance(context: Context, spName: String): SPUtils {
             var spName = spName
             if (isSpace(spName)) spName = "spUtils"
             var sp: SPUtils? = sSPMap[spName]
             if (sp == null) {
-                sp = SPUtils(context,spName)
+                sp = SPUtils(context, spName)
                 sSPMap.put(spName, sp)
             }
             return sp
