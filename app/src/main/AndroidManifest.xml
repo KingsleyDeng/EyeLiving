@@ -23,7 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.VideoDetailActivity"></activity>
+        <activity android:name=".ui.VideoDetailActivity" />
+        <activity android:name=".ui.ResultActivity"></activity>
     </application>
 
 </manifest>

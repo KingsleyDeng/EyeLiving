@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.kingsley.eyeliving.R
+import com.kingsley.eyeliving.ui.ResultActivity
 
 /**
  * Created by Stephen on 2018/3/9.
@@ -41,10 +42,10 @@ class SearchAdapter(context: Context, list: ArrayList<String>) : RecyclerView.Ad
             (holder?.tv_title?.layoutParams as FlexboxLayoutManager.LayoutParams).flexGrow = 1.0f
         }
         holder?.itemView?.setOnClickListener {
-            //            var keyWord = list?.get(position)
-//            var intent: Intent = Intent(context, ResultActivity::class.java)
-//            intent.putExtra("keyWord", keyWord)
-//            context?.startActivity(intent)
+            var keyWord = list?.get(position)
+            var intent: Intent = Intent(context, ResultActivity::class.java)
+            intent.putExtra("keyWord", keyWord)
+            context?.startActivity(intent)
             mDialogListener?.onDismiss()
         }
     }
