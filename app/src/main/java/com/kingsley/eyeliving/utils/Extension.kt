@@ -1,6 +1,8 @@
 package com.kingsley.eyeliving.utils
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.Gravity
 import android.widget.Toast
 import io.reactivex.Observable
@@ -15,6 +17,11 @@ fun Context.showToast(message: String) : Toast{
     toast.setGravity(Gravity.CENTER,0,0)
     toast.show()
     return toast
+}
+
+inline fun <reified T: Activity> Activity.newIntent() {
+    val intent = Intent(this, T::class.java)
+    startActivity(intent)
 }
 
 fun <T> Observable<T>.applySchedulers(): Observable<T> {
