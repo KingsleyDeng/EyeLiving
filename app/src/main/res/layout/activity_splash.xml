@@ -6,11 +6,11 @@
     android:background="@drawable/splash">
     <ImageView
         android:id="@+id/iv_icon_splash"
-        android:layout_width="61dp"
-        android:layout_height="42dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/icon_launcher"/>
+        android:background="@drawable/icon_splash_noback"/>
     <TextView
         android:id="@+id/tv_name_english"
         android:layout_marginTop="20dp"
